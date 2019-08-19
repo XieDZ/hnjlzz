@@ -1,0 +1,10 @@
+<view class="bg">
+  <image class="bg-image" mode="scaleToFill" style="background-image: url('./img/bg.jpg');background-size: cover"></image>
+</view>
+<view>
+  <input class="username" bindinput="userVal" focus="focusUser" type="text" placeholder-style="color:#ccc" placeholder="请输入用户名" style="" />
+   <text>{{userMas}}</text>
+  <input class="password" bindinput="passVal" type="password" placeholder-style="color:#ccc" placeholder="请输入密码" style="" />
+  <text>{{ressage}}</text>
+  <button class="submit" type="primary" bindtap="submit" >确定</button>
+</view>
