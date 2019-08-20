@@ -110,7 +110,7 @@ Page({
           }
         } else {
           _self.setData({
-            ressage: res.data.data
+            ressage: "登录失败"
           })
         }
       },
