@@ -1,19 +1,23 @@
 // pages/map/map.js
 var app = getApp();
+var Data;
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    markers: []
+    markers: [],
+    hiddenName:true,
+    addr:"",
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    wx.setNavigationBarTitle({ title: 'gis展示' })
   },
 
   /**
@@ -32,15 +36,26 @@ Page({
       data: "",
       success: function(res) {
         var data = JSON.parse(res.data.data);
+        Data = data;
         var markers = []
         for (var i = 0; i < data.length; i++) {
+          var content = data[i].jcdmc + "\nCOD:" + data[i].cod + "(mg/L)\n氨氮:" + data[i].ad + "(mg/L)\npH:" + data[i].ph + "\n累计流量" + data[i].cq1
           var marker = {
             id: i,
            // iconPath: "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=530643247,2345229158&fm=85&app=57&f=JPEG?w=121&h=75&s=6961B3423BEC936C0CCDE406000080C2",
             latitude: data[i].wd,
-            name: data[i].jcdmc,
             longitude: data[i].jd,
             width: 50,
+            callout:{
+              content: content,
+              padding:3,
+              borderRadius:5,
+              fontSize:12,
+              color:"#ccc",
+              bgColor:"000",
+
+            },
+            
             height: 50
           }
           markers.push(marker);
@@ -111,6 +126,10 @@ Page({
     console.log(e.type)
   },
   markertap(e) {
+    this.setData({
+      addr:Data[e.markerId].jcdmc,
+      hiddenName:false,
+    })
     console.log(e.markerId)
   },
   controltap(e) {
