@@ -1,10 +1,19 @@
 <view class="bg">
   <image class="bg-image" mode="scaleToFill" style="background-image: url('./img/bg.jpg');background-size: cover"></image>
 </view>
-<view>
-  <input class="username" bindinput="userVal" focus="focusUser" type="text" placeholder-style="color:#ccc" placeholder="请输入用户名" style="" />
+<view class="login_logo">
+   <image src="img/logo.png" mode="widthFix" class="logoin-image"></image>
+   <view class="login_span">
+      水质在线监测系统
+   </view>
+</view>
+<view class="login_content">
+  <input class="username" bindinput="userVal" focus="focusUser" type="text" placeholder-style="color:#ccc" placeholder="请输入用户名" />
    <text>{{userMas}}</text>
   <input class="password" bindinput="passVal" type="password" placeholder-style="color:#ccc" placeholder="请输入密码" style="" />
   <text>{{ressage}}</text>
   <button class="submit" type="primary" bindtap="submit" >确定</button>
+</view>
+<view class="footer">
+© 2019 湖南金龙智造科技股份有限公司
 </view>
