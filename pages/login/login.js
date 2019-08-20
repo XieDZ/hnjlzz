@@ -15,9 +15,6 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    wx.setNavigationBarTitle({ title: '用户登录' })
-  },
 
   onLoad: function (options) {
     wx.setNavigationBarTitle({ title: '用户登录' })
@@ -102,7 +99,7 @@ Page({
           for (var i = 0; i < res.cookies.length; i++) {
             if (res.cookies[i].indexOf("shiroCookie") != -1) {
               app.globalData.cookies = res.cookies[0];
-              wx.redirectTo({
+              wx.switchTab({
                 url: '../map/map'
               });
               break;

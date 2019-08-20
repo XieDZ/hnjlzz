@@ -3,7 +3,10 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/login/login",
-    "pages/map/map"
+    "pages/map/map",
+    "pages/history/index",
+    "pages/realTime/index",
+    "pages/my/index"
 
   ],
   "window": {
@@ -12,5 +15,37 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#fff",
+    "borderStyle": "white",
+    "backgroundColor": "#292929",
+    "list": [
+      {
+        "pagePath": "pages/map/map",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/history/index",
+        "iconPath": "images/history.png",
+        "selectedIconPath": "images/history-on.png",
+        "text": "统计分析"
+      },
+      {
+        "pagePath": "pages/realTime/index",
+        "iconPath": "images/realTime.png",
+        "selectedIconPath": "images/realTime-on.png",
+        "text": "系统运维"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my-on.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "debug": true
 }
