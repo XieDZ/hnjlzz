@@ -1,4 +1,6 @@
 <!--pages/map/map.wxml-->
-<map id="myMap" longitude="113.1379795074" scale="{{scale}}" markers="{{markers}}" latitude="28.2217518704" bindmarkertap="markertap" show-location style="width:100%;height: 50rem" />
-
-
+<map id="myMap" longitude="{{longitude}}" scale="{{scale}}" markers="{{markers}}" latitude="{{latitude}}" bindmarkertap="markertap" show-location style="width:100%;height: 50rem">
+<cover-view>
+  <input type="text" bindinput="tiInput" placeholder="请输入站点号" class="title_input"/><button class="suosou" bindtap="submit">搜索</button>
+  </cover-view>
+</map>
