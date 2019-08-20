@@ -9,8 +9,8 @@ Page({
    */
   data: {
     markers: [],
-    hiddenName:true,
-    addr:"",
+    hiddenName: true,
+    scale: 12,
   },
 
   /**
@@ -18,7 +18,7 @@ Page({
    */
   onLoad: function(options) {
     wx.setNavigationBarTitle({ title: '首页' })
-  },
+},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -39,24 +39,40 @@ Page({
         Data = data;
         var markers = []
         for (var i = 0; i < data.length; i++) {
-          var content = data[i].jcdmc + "\nCOD:" + data[i].cod + "(mg/L)\n氨氮:" + data[i].ad + "(mg/L)\npH:" + data[i].ph + "\n累计流量" + data[i].cq1
+          if (data[i].cod == undefined) {
+            data[i].cod = ""
+          }
+          if (data[i].ad == undefined) {
+            data[i].ad = ""
+          }
+          if (data[i].ph == undefined) {
+            data[i].ph = ""
+          }
+          if (data[i].cq1 == undefined) {
+            data[i].cq1 = ""
+          }
+          if (data[i].z == undefined) {
+            data[i].z = ""
+          }
+          if (data[i].va == undefined) {
+            data[i].va = ""
+          }
+          var content = data[i].jcdmc + "\nCOD:" + data[i].cod + "(mg/L)\n氨氮:" + data[i].ad + "(mg/L)\npH:" + data[i].ph + "\n累计流量" + data[i].cq1 + "(吨)\n水位:" + data[i].z + "(m)\n流速:" + data[i].va + "(m/s)"
           var marker = {
             id: i,
-           // iconPath: "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=530643247,2345229158&fm=85&app=57&f=JPEG?w=121&h=75&s=6961B3423BEC936C0CCDE406000080C2",
+            // iconPath: "https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=530643247,2345229158&fm=85&app=57&f=JPEG?w=121&h=75&s=6961B3423BEC936C0CCDE406000080C2",
             latitude: data[i].wd,
             longitude: data[i].jd,
             width: 50,
-            callout:{
+            height: 30,
+            callout: {
               content: content,
-              padding:3,
-              borderRadius:5,
-              fontSize:12,
-              color:"#ccc",
-              bgColor:"000",
-
+              padding: 3,
+              borderRadius: 5,
+              fontSize: 12,
+              color: "#ccc",
+              bgColor: "000",
             },
-            
-            height: 50
           }
           markers.push(marker);
         }
@@ -127,10 +143,8 @@ Page({
   },
   markertap(e) {
     this.setData({
-      addr:Data[e.markerId].jcdmc,
-      hiddenName:false,
+      scale: 14,
     })
-    console.log(e.markerId)
   },
   controltap(e) {
     console.log(e.controlId)
