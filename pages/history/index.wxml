@@ -1,2 +1,28 @@
 <!--pages/history/index.wxml-->
-<text>pages/history/index.wxml</text>
+<view class='select_box'> 
+    <view class='select' catchtap='selectTap'> 
+        <image class='ico_img address' src='../../images/my-order-address.png' background-size="contain"></image>
+        <text class='select_text'>{{selectData[index]}}</text> 
+    </view> 
+    <view class='option_box' style='height:{{selectShow?(selectData.length>5?625:selectData.length*90):0}}rpx;'> 
+        <text class='option' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</text> 
+    </view> 
+</view> 
+<view class="picker_group">   
+      <image class='ico_img address' src='../../images/my-order-time.png'  background-size="contain"></image>
+      <picker mode="date" value="{{starttime}}" end="{{endtime}}" bindchange="bindDateChange">   
+        <text class="picker">   
+          {{starttime}}   
+        </text>   
+      </picker>
+      <text>至</text>
+      <picker mode="date" value="{{endtime}}" start="{{starttime}}"  bindchange="bindDateChange2">   
+        <text class="picker">   
+          {{endtime}}   
+        </text>   
+      </picker>   
+</view> 
+  
+<view class="container"> 
+  <ec-canvas id="mychart-dom-bar" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas> 
+</view>
